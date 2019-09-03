@@ -13,3 +13,16 @@ body {
     body #grid_wrapper .grid_column {
       border-left: 1px solid #555;
       border-right: 1px solid #555; }
+      body #grid_wrapper .grid_column .feed_add_icon {
+        font-size: 56px;
+        color: #2db82d;
+        transition: all ease-in-out 0.2s;
+        cursor: pointer; }
+        body #grid_wrapper .grid_column .feed_add_icon:hover {
+          color: lime; }
+
+.center_all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }

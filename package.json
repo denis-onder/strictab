@@ -6,7 +6,10 @@
   "scripts": {
     "css": "node-sass scss/style.scss -o web/",
     "css:watch": "npm run css && node-sass scss/style.scss -wo web/",
-    "start": "npm run css && node ."
+    "js": "npx babel ./js/main.js --out-file ./web/main.js",
+    "js:watch": "npx babel ./js/main.js --watch --out-file ./web/main.js",
+    "compile": "npm run css && npm run js",
+    "start": "npm run css && npm run js && node ."
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,10 @@
   },
   "homepage": "https://github.com/denis-onder/strictab#readme",
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "concurrently": "^4.1.2",
     "eslint": "^6.2.2",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1"
