@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 body {
   width: 100%;
   height: 100vh;
@@ -20,6 +21,40 @@ body {
         cursor: pointer; }
         body #grid_wrapper .grid_column .feed_add_icon:hover {
           color: lime; }
+  body #input_modal {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    body #input_modal #input_modal_exit {
+      color: #333;
+      font-size: 56px;
+      position: absolute;
+      top: 0;
+      right: 5%;
+      cursor: pointer;
+      transition: all ease-in-out 0.2s; }
+      body #input_modal #input_modal_exit:hover {
+        transform: rotate(360deg); }
+    body #input_modal .input_modal_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 35%;
+      height: 20%; }
+      body #input_modal .input_modal_wrapper .input_modal_input {
+        margin: 5px 0; }
+      body #input_modal .input_modal_wrapper #input_modal_btn {
+        margin: 5px 0; }
+
+.modal {
+  display: flex !important; }
 
 .center_all {
   display: flex;

@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+$fonts: "Roboto", Arial, Helvetica, sans-serif;
+$green: rgb(45, 184, 45);
+
 body {
   width: 100%;
   height: 100vh;
@@ -15,7 +19,7 @@ body {
       border-right: 1px solid #555;
       .feed_add_icon {
         font-size: 56px;
-        color: rgb(45, 184, 45);
+        color: $green;
         transition: all ease-in-out 0.2s;
         cursor: pointer;
         &:hover {
@@ -24,6 +28,47 @@ body {
       }
     }
   }
+  #input_modal {
+    position: fixed;
+    background-color: rgba(rgb(255, 255, 255), 0.5);
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    #input_modal_exit {
+      color: #333;
+      font-size: 56px;
+      position: absolute;
+      top: 0;
+      right: 5%;
+      cursor: pointer;
+      transition: all ease-in-out 0.2s;
+      &:hover {
+        transform: rotate(360deg);
+      }
+    }
+    .input_modal_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 35%;
+      height: 20%;
+      .input_modal_input {
+        margin: 5px 0;
+      }
+      #input_modal_btn {
+        margin: 5px 0;
+      }
+    }
+  }
+}
+
+.modal {
+  display: flex !important;
 }
 
 .center_all {

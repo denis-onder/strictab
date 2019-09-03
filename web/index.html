@@ -11,18 +11,26 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
-    <title>Document</title>
+    <title>strictab</title>
   </head>
   <body>
+    <div id="input_modal">
+      <p id="input_modal_exit">&Cross;</p>
+      <div class="input_modal_wrapper">
+        <input type="text" class="input_modal_input" placeholder="Feed Name:"/>
+        <input type="text" class="input_modal_input" placeholder="Subreddit Name:"/>
+        <button id="input_modal_btn">Add To Feed!</button>
+      </div>
+    </div>
     <div id="grid_wrapper">
       <div class="grid_column" id="feed_zero">
-        <i class="feed_add_icon fa fa-plus-circle"></i>
+        <i class="feed_add_icon fa fa-plus-circle" data-column="zero"></i>
       </div>
       <div class="grid_column" id="feed_one">
-        <i class="feed_add_icon fa fa-plus-circle"></i>
+        <i class="feed_add_icon fa fa-plus-circle" data-column="one"></i>
       </div>
       <div class="grid_column" id="feed_two">
-        <i class="feed_add_icon fa fa-plus-circle"></i>
+        <i class="feed_add_icon fa fa-plus-circle" data-column="two"></i>
       </div>
     </div>
     <script src="./main.js"></script>
