@@ -4,9 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Document</title>
   </head>
   <body>
-    <h1>landing page</h1>
+    <div id="modal">
+      <i class="fa fa-times" id="modal_exit_button" aria-hidden="true"></i>
+      <div class="modal_form">
+        <input
+          type="text"
+          class="modal_form_input"
+          id="modal_form_name"
+          placeholder="feed name: "
+        />
+        <input
+          type="text"
+          class="modal_form_input"
+          id="modal_form_subreddit"
+          placeholder="subreddit: "
+        />
+        <button id="modal_form_button">add feed</button>
+      </div>
+    </div>
+    <div id="feed_wrapper">
+      <div class="feed_column" id="feed_one"></div>
+      <div class="feed_column" id="feed_two"></div>
+      <div class="feed_column" id="feed_three"></div>
+    </div>
+    <script src="./main.js"></script>
   </body>
 </html>
