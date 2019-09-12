@@ -31,16 +31,41 @@ const readFeed = async (feed, subreddit) => {
     `https://www.reddit.com/r/${subreddit}/top/.json?count=20`
   );
   const data = await res.json();
-  console.log(data);
   data.data.children.forEach(post => {
     feed.innerHTML += `<div class="feed_column_post">
-       <img src="${post.data.thumbnail}" />
+    <img class="feed_column_post_image" src="${
+      post.data.thumbnail
+        ? post.data.thumbnail
+        : "http://www.exceptnothing.com/wp-content/uploads/2014/11/Reddit-Logo.png"
+    }" />
        <div class="feed_column_post_info">
-         <a href="https://www.reddit.com/u/${post.data.author}" target="_blank" class="feed_column_post_info_tag">/u/${post.data.author}</a>
-         <a href="https://www.reddit.com${post.data.permalink}" target="_blank" class="feed_column_post_info_tag">${post.data.title}</a>
+         <a href="https://www.reddit.com/u/${
+           post.data.author
+         }" target="_blank" class="feed_column_post_info_tag">/u/${
+      post.data.author
+    }</a>
+         <a href="https://www.reddit.com${
+           post.data.permalink
+         }" target="_blank" class="feed_column_post_info_tag">${
+      post.data.title
+    }</a>
        </div>
      </div>`;
   });
+  // Fix broken images
+  Array.from(document.getElementsByClassName("feed_column_post_image")).forEach(
+    img => {
+      if (
+        img.getAttribute("src") === "self" ||
+        img.getAttribute("src") === ""
+      ) {
+        img.setAttribute(
+          "src",
+          "http://www.exceptnothing.com/wp-content/uploads/2014/11/Reddit-Logo.png"
+        );
+      }
+    }
+  );
 };
 
 // Open modal for the correct feed column

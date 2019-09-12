@@ -37,6 +37,23 @@ body {
           color: $light_green;
         }
       }
+      .feed_column_post {
+        width: 90%;
+        height: 100px;
+        background-color: $light_gray;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .feed_column_post_image {
+          width: 100px !important;
+          height: 100px !important;
+        }
+        .feed_column_post_info {
+          display: flex;
+          flex-direction: column;
+        }
+      }
     }
     #feed_two {
       border-left: 2px solid $light_gray;

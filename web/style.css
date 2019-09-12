@@ -25,6 +25,20 @@ body {
         cursor: pointer; }
         body #feed_wrapper .feed_column .feed_column_add:hover {
           color: #3cd03c; }
+      body #feed_wrapper .feed_column .feed_column_post {
+        width: 90%;
+        height: 100px;
+        background-color: #666666;
+        margin: 10px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center; }
+        body #feed_wrapper .feed_column .feed_column_post .feed_column_post_image {
+          width: 100px !important;
+          height: 100px !important; }
+        body #feed_wrapper .feed_column .feed_column_post .feed_column_post_info {
+          display: flex;
+          flex-direction: column; }
     body #feed_wrapper #feed_two {
       border-left: 2px solid #666666;
       border-right: 2px solid #666666; }
