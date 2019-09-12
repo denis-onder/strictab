@@ -28,7 +28,7 @@ const addFeed = (columnName, feedName, feedSubreddit) => {
 // Read feeds and set cards
 const readFeed = async (feed, subreddit) => {
   const res = await fetch(
-    `https://www.reddit.com/r/${subreddit}/top/.json?count=20`
+    `https://www.reddit.com/r/${subreddit}/top/.json?count=50`
   );
   const data = await res.json();
   data.data.children.forEach(post => {
