@@ -26,11 +26,21 @@ const addFeed = (columnName, feedName, feedSubreddit) => {
 };
 
 // Read feeds and set cards
-const readFeed = (feed, subreddit) => {
-  fetch(`https://www.reddit.com/r/${subreddit}/top/.json?count=20`)
-    .then(res => res.json())
-    .then(data => console.log(data));
-  console.log(feed.id, subreddit);
+const readFeed = async (feed, subreddit) => {
+  const res = await fetch(
+    `https://www.reddit.com/r/${subreddit}/top/.json?count=20`
+  );
+  const data = await res.json();
+  console.log(data);
+  data.data.children.forEach(post => {
+    feed.innerHTML += `<div class="feed_column_post">
+       <img src="${post.data.thumbnail}" />
+       <div class="feed_column_post_info">
+         <a href="https://www.reddit.com/u/${post.data.author}" target="_blank" class="feed_column_post_info_tag">/u/${post.data.author}</a>
+         <a href="https://www.reddit.com${post.data.permalink}" target="_blank" class="feed_column_post_info_tag">${post.data.title}</a>
+       </div>
+     </div>`;
+  });
 };
 
 // Open modal for the correct feed column
