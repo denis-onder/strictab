@@ -25,15 +25,31 @@ const addFeed = (columnName, feedName, feedSubreddit) => {
   modal.style.display = "none";
 };
 
+// Remove feed
+const removeFeed = columnName => {
+  const state = JSON.parse(localStorage.getItem("feeds"));
+  for (let i = 0; i < state.length; i++) {
+    if (state[i].columnName === columnName) {
+      state.splice(i, 1);
+    }
+  }
+  localStorage.setItem("feeds", JSON.stringify(state));
+  init();
+};
+
 // Read feeds and set cards
-const readFeed = async (feed, subreddit) => {
+const readFeed = async (feed, { feedName, feedSubreddit, columnName }) => {
+  // Fetch data from the API
   const res = await fetch(
-    `https://www.reddit.com/r/${subreddit}/top/.json?count=50`
+    `https://www.reddit.com/r/${feedSubreddit}/top/.json?count=50`
   );
   const data = await res.json();
+  // Add top info banner
+  feed.innerHTML = `<div class="feed_column_info"><a class="feed_column_info_tag" href="https://www.reddit.com/r/${feedSubreddit}/" target="_blank">${feedName}</a><i class="fa fa-trash fa-2x feed_column_info_delete" data-column="${columnName}"></i></div>`;
+  // Create HTML for the individual posts
   data.data.children.forEach(post => {
     feed.innerHTML += `<div class="feed_column_post">
-    <img class="feed_column_post_image" src="${
+    <img class="feed_column_post_image" width="100px" height="100px" src="${
       post.data.thumbnail
         ? post.data.thumbnail
         : "http://www.exceptnothing.com/wp-content/uploads/2014/11/Reddit-Logo.png"
@@ -66,6 +82,13 @@ const readFeed = async (feed, subreddit) => {
       }
     }
   );
+  // Add the ability to remove feeds
+  const trashCans = document.querySelectorAll(".feed_column_info_delete");
+  trashCans.forEach(can =>
+    can.addEventListener("click", e =>
+      removeFeed(e.target.getAttribute("data-column"))
+    )
+  );
 };
 
 // Open modal for the correct feed column
@@ -96,14 +119,18 @@ const createIcon = index => {
 // Initialization: Check the feeds
 function init() {
   const state = JSON.parse(localStorage.getItem("feeds")) || [];
-  // Create the icons
-  feeds.forEach((v, i) => createIcon(i));
+  // Create the icons, but clear the innerHTML first.
+  feeds.forEach((v, i) => {
+    v.innerHTML = "";
+    v.classList.add("feed");
+    createIcon(i);
+  });
   // Check the state.
   for (let i = 0; i < state.length; i++) {
     for (let j = 0; j < feeds.length; j++) {
       if (feeds[j].id === state[i].columnName) {
-        feeds[j].firstChild.remove();
-        readFeed(feeds[j], state[i].feedSubreddit);
+        feeds[j].classList.remove("feed");
+        readFeed(feeds[j], state[i]);
       }
     }
   }

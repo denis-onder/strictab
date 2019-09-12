@@ -22,6 +22,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     .feed_column {
+      padding: 0 20px 0 20px;
       .feed_column_add {
         font-size: 56px;
         color: $light_gray;
@@ -29,6 +30,31 @@ body {
         cursor: pointer;
         &:hover {
           color: $light_green;
+        }
+      }
+      .feed_column_info {
+        width: 100%;
+        height: 50px;
+        background-color: $light_gray;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        .feed_column_info_tag {
+          font-size: 26px;
+          margin: 0 10px;
+          color: #fff;
+          cursor: pointer;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .feed_column_info_delete {
+          cursor: pointer;
+          color: red;
         }
       }
       .feed_column_post {
@@ -49,8 +75,6 @@ body {
         .feed_column_post_info {
           display: flex;
           flex-direction: column;
-          // justify-content: center;
-          // align-items: center;
           margin: 0 10px;
           .feed_column_post_info_tag {
             color: #fff;
@@ -130,4 +154,12 @@ body {
       }
     }
   }
+}
+
+// Feed classlist for centering icons
+.feed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
