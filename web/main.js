@@ -129,6 +129,7 @@ function init() {
   for (let i = 0; i < state.length; i++) {
     for (let j = 0; j < feeds.length; j++) {
       if (feeds[j].id === state[i].columnName) {
+        console.log(feeds[j].id, state[i].columnName);
         feeds[j].classList.remove("feed");
         readFeed(feeds[j], state[i]);
       }
